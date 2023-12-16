@@ -157,11 +157,16 @@ function rgbFunction(r, g, b) {
   r > 255 ? (r = 255) : r < 0 ? (r = 0) : (r = r);
   g > 255 ? (g = 255) : g < 0 ? (g = 0) : (g = g);
   b > 255 ? (b = 255) : b < 0 ? (b = 0) : (b = b);
-  const red =r.toString(16) < 10 || Number.isNaN(r.toString(16))? 0 + r.toString(16): r.toString(16).toUpperCase();
-  // const green =g.toString(16) < 10 || Number.isNaN(g.toString(16))? 0 + g.toString(16): g.toString(16).toUpperCase();
-  // const blue =b.toString(16) < 10 || Number.isNaN(b.toString(16))? 0 + b.toString(16): b.toString(16).toUpperCase();
-  return red /* + green + blue */;
+
+  const red =r.toString(16) < 10 || Number.isNaN(r.toString(16))? 0 + r.toString(16): r.toString(16).length>1?  r.toString(16).toUpperCase() : 0 + r.toString(16).toUpperCase() ;
+  const green =g.toString(16) < 10 || Number.isNaN(g.toString(16))? 0 + g.toString(16): g.toString(16).length>1?  g.toString(16).toUpperCase() : 0 + g.toString(16).toUpperCase() ;
+  const blue =b.toString(16) < 10 || Number.isNaN(b.toString(16))? 0 + b.toString(16): b.toString(16).length>1?  b.toString(16).toUpperCase() : 0 + b.toString(16).toUpperCase() ;
+
+  return red + green + blue;
 }
+
+// const toHex = x => {}
+
 
 console.log(rgbFunction(0, 0, -20));
 console.log(rgbFunction(0, 0, 0));
@@ -169,9 +174,10 @@ console.log(rgbFunction(255, 255, 255));
 console.log(rgbFunction(255, 255, 300));
 console.log(rgbFunction(173, 255, 47)); // 'ADFF2F'
 console.log(rgbFunction(12, 252, 69)); // '0CFC45'
-console.log(rgbFunction(12, 12, 12)); // '0CFC45'
 
-const a = 255;
+const a = 12;
+// const red =a.toString(16) < 10 || Number.isNaN(a.toString(16))? 0 + a.toString(16): a.toString(16).toUpperCase();
+const red =a.toString(16).length;
 const b = 16;
 const c = b ** 1;
 const d = b ** 2;
@@ -181,4 +187,4 @@ console.log(a / b);
 console.log(c);
 console.log(d);
 console.log(e);
-console.log(a.toString(b));
+console.log(red.toString(b));
