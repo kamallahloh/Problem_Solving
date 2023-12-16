@@ -11,18 +11,15 @@ console.log(kamal.charAt(5));
 console.log(kamal.at(-1));
 console.log(kamal.at(0));
 console.log(kamal.at(5));
+console.log(kamal[kamal.length - 1]);
 
 //! /////////////////////////////////////
 console.clear();
-
-
 
 console.log(null && false);
 console.log(null === false);
 console.log(null === false);
 console.log(null === false);
-
-
 
 //! /////////////////////////////////////
 console.clear();
@@ -111,20 +108,20 @@ console.log(countBits(43));
 console.clear();
 
 function comp(array1, array2) {
-  if(array1 === null || array2 === null) return false
+  if (array1 === null || array2 === null) return false;
   for (let index = 0; index < array1.length; index++) {
-    const check = array2.some((ele,i) => {
-      const matchCase = array1[index] * array1[index] === ele
+    const check = array2.some((ele, i) => {
+      const matchCase = array1[index] * array1[index] === ele;
       if (matchCase) {
-        array1.splice(index,1)
-        array2.splice(i,1)
-        index--
+        array1.splice(index, 1);
+        array2.splice(i, 1);
+        index--;
       }
       return matchCase;
     });
-    if (!check) return false
+    if (!check) return false;
   }
-  return true
+  return true;
 }
 
 let a1 = [121, 144, 19, 161, 19, 144, 19, 11];
@@ -144,3 +141,44 @@ console.log(a2);
 //! /////////////////////////////////////
 console.clear();
 
+/* 
+The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
+
+Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
+
+Examples (input --> output):
+255, 255, 255 --> "FFFFFF"
+255, 255, 300 --> "FFFFFF"
+0, 0, 0       --> "000000"
+148, 0, 211   --> "9400D3"
+*/
+
+function rgbFunction(r, g, b) {
+  r > 255 ? (r = 255) : r < 0 ? (r = 0) : (r = r);
+  g > 255 ? (g = 255) : g < 0 ? (g = 0) : (g = g);
+  b > 255 ? (b = 255) : b < 0 ? (b = 0) : (b = b);
+  const red =r.toString(16) < 10 || Number.isNaN(r.toString(16))? 0 + r.toString(16): r.toString(16).toUpperCase();
+  // const green =g.toString(16) < 10 || Number.isNaN(g.toString(16))? 0 + g.toString(16): g.toString(16).toUpperCase();
+  // const blue =b.toString(16) < 10 || Number.isNaN(b.toString(16))? 0 + b.toString(16): b.toString(16).toUpperCase();
+  return red /* + green + blue */;
+}
+
+console.log(rgbFunction(0, 0, -20));
+console.log(rgbFunction(0, 0, 0));
+console.log(rgbFunction(255, 255, 255));
+console.log(rgbFunction(255, 255, 300));
+console.log(rgbFunction(173, 255, 47)); // 'ADFF2F'
+console.log(rgbFunction(12, 252, 69)); // '0CFC45'
+console.log(rgbFunction(12, 12, 12)); // '0CFC45'
+
+const a = 255;
+const b = 16;
+const c = b ** 1;
+const d = b ** 2;
+const e = b ** 3;
+
+console.log(a / b);
+console.log(c);
+console.log(d);
+console.log(e);
+console.log(a.toString(b));
