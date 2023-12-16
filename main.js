@@ -153,31 +153,33 @@ Examples (input --> output):
 148, 0, 211   --> "9400D3"
 */
 
-function rgbFunction(r, g, b) {
-  r > 255 ? (r = 255) : r < 0 ? (r = 0) : (r = r);
-  g > 255 ? (g = 255) : g < 0 ? (g = 0) : (g = g);
-  b > 255 ? (b = 255) : b < 0 ? (b = 0) : (b = b);
-
-  const red =r.toString(16) < 10 || Number.isNaN(r.toString(16))? 0 + r.toString(16): r.toString(16).length>1?  r.toString(16).toUpperCase() : 0 + r.toString(16).toUpperCase() ;
-  const green =g.toString(16) < 10 || Number.isNaN(g.toString(16))? 0 + g.toString(16): g.toString(16).length>1?  g.toString(16).toUpperCase() : 0 + g.toString(16).toUpperCase() ;
-  const blue =b.toString(16) < 10 || Number.isNaN(b.toString(16))? 0 + b.toString(16): b.toString(16).length>1?  b.toString(16).toUpperCase() : 0 + b.toString(16).toUpperCase() ;
-
-  return red + green + blue;
+function rgb (r, g, b) {
+  return toHex(r) + toHex(g) + toHex(b);
 }
 
-// const toHex = x => {}
+const toHex = (x) => {
+  x > 255 ? (x = 255) : x < 0 ? (x = 0) : (x = x);
 
+  const hex =
+    x.toString(16) < 10 || Number.isNaN(x.toString(16))
+      ? 0 + x.toString(16)
+      : x.toString(16).length > 1
+      ? x.toString(16).toUpperCase()
+      : 0 + x.toString(16).toUpperCase();
 
-console.log(rgbFunction(0, 0, -20));
-console.log(rgbFunction(0, 0, 0));
-console.log(rgbFunction(255, 255, 255));
-console.log(rgbFunction(255, 255, 300));
-console.log(rgbFunction(173, 255, 47)); // 'ADFF2F'
-console.log(rgbFunction(12, 252, 69)); // '0CFC45'
+  return hex;
+};
+
+console.log(rgb(0, 0, -20));
+console.log(rgb(0, 0, 0));
+console.log(rgb(255, 255, 255));
+console.log(rgb(255, 255, 300));
+console.log(rgb(173, 255, 47)); // 'ADFF2F'
+console.log(rgb(12, 252, 69)); // '0CFC45'
 
 const a = 12;
 // const red =a.toString(16) < 10 || Number.isNaN(a.toString(16))? 0 + a.toString(16): a.toString(16).toUpperCase();
-const red =a.toString(16).length;
+const red = a.toString(16).length;
 const b = 16;
 const c = b ** 1;
 const d = b ** 2;
