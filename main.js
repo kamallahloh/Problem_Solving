@@ -153,7 +153,7 @@ Examples (input --> output):
 148, 0, 211   --> "9400D3"
 */
 
-function rgb (r, g, b) {
+function rgb(r, g, b) {
   return toHex(r) + toHex(g) + toHex(b);
 }
 
@@ -190,3 +190,27 @@ console.log(c);
 console.log(d);
 console.log(e);
 console.log(red.toString(b));
+
+//! /////////////////////////////////////
+console.clear();
+
+/* 
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+Examples
+pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+*/
+
+function pigIt(str) {
+  let regex = /^[a-zA-Z]+$/;
+
+  return str
+    .split(" ")
+    .map((elem) =>
+      regex.test(elem) ? (elem = elem.slice(1) + elem.at(0) + "ay") : elem
+    )
+    .join(" ");
+}
+
+console.log(pigIt("Pig latin is cool")); //igPay atinlay siay oolcay
+console.log(pigIt("This is my string !")); //hisTay siay ymay tringsay
