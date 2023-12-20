@@ -208,9 +208,17 @@ function pigIt(str) {
     .split(" ")
     .map((elem) =>
       regex.test(elem) ? (elem = elem.slice(1) + elem.at(0) + "ay") : elem
+     /*  regex.test(elem) ? (elem = elem.substr(1) + elem.at(0) + "ay") : elem */
     )
     .join(" ");
 }
 
 console.log(pigIt("Pig latin is cool")); //igPay atinlay siay oolcay
 console.log(pigIt("This is my string !")); //hisTay siay ymay tringsay
+
+let t = "This is my string !"
+console.log(t.substr(5));
+console.log(t.substring(5));
+
+//! /////////////////////////////////////
+console.clear();
