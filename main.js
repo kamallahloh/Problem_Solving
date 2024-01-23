@@ -391,7 +391,6 @@ function isPrime(num) {
   // }
   // return true;
 
-
   if (num === 2 || num === 3) {
     return true;
   }
@@ -428,3 +427,27 @@ console.log(isPrime(15));
 // console.log(isPrime(11));
 // console.log(isPrime(13));
 // console.log(isPrime(15));
+
+//! /////////////////////////////////////
+console.clear();
+
+// const descendingOrder = (n) => Array.from(`${n}`).sort().reverse().join("") * 1;
+const descendingOrder = (n) =>
+  `${n}`
+    .split("")
+    .sort((a, b) => b - a)
+    .join("") * 1;
+
+console.log(descendingOrder(65651));
+console.log(descendingOrder(231));
+console.log(descendingOrder(12));
+
+// let x = 5;
+// console.log(`${x}`);
+
+// let array = [11, 2, 1, 15, 7, 9, 53, 14];
+// console.log(array.sort((a, b) => a - b));
+
+
+//! /////////////////////////////////////
+console.clear();
