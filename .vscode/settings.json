@@ -6,5 +6,6 @@
         "siay",
         "tringsay",
         "ymay"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

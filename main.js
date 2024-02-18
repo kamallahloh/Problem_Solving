@@ -356,70 +356,62 @@
 // console.log(binary00to08);
 
 //! /////////////////////////////////////
-console.clear();
+// console.clear();
 
-const reverseStrArr = (s) => {
-  let [l, r] = [0, s.length - 1];
-  console.log(l, r);
+// const reverseStrArr = (s) => {
+//   let [l, r] = [0, s.length - 1];
+//   console.log(l, r);
 
-  // while (r > l) {
-  // [s[l], s[r]] = [s[r], s[l]]
+//   // while (r > l) {
+//   // [s[l], s[r]] = [s[r], s[l]]
 
-  // [l, r] = [l + 1, r - 1];
-  // }
+//   // [l, r] = [l + 1, r - 1];
+//   // }
 
-  for (let i = 0; i <= Math.floor(s.length / 2); i++) {
-    [s[l], s[r]] = [s[r], s[l]];
-    l++;
-    r--;
-  }
+//   for (let i = 0; i <= Math.floor(s.length / 2); i++) {
+//     [s[l], s[r]] = [s[r], s[l]];
+//     l++;
+//     r--;
+//   }
 
-  return s;
-};
+//   return s;
+// };
 
-console.log(reverseStrArr(["a", "b", "c", "d", "e", "f", "g", "h"]));
+// console.log(reverseStrArr(["a", "b", "c", "d", "e", "f", "g", "h"]));
 
 //! /////////////////////////////////////
-console.clear();
+// console.clear();
 
-function isPrime(num) {
-  if (num < 2) return false;
-  // let divisor = 2;
-  // while (divisor < num) {
-  //   if (num % divisor === 0) return false;
-  //   divisor++;
-  // }
-  // return true;
+// function isPrime(num) {
+//   if (num < 2) return false;
+//   // let divisor = 2;
+//   // while (divisor < num) {
+//   //   if (num % divisor === 0) return false;
+//   //   divisor++;
+//   // }
+//   // return true;
 
-  if (num === 2 || num === 3) {
-    return true;
-  }
+//   if (num === 2 || num === 3) {
+//     return true;
+//   }
 
-  if (num % 2 === 0 || num % 3 === 0) {
-    return false;
-  }
+//   if (num % 2 === 0 || num % 3 === 0) {
+//     return false;
+//   }
 
-  for (let i = 5; i * i <= num; i += 6) {
-    if (num % i === 0 || num % (i + 2) === 0) {
-      return false;
-    }
-  }
+//   for (let i = 5; i * i <= num; i += 6) {
+//     if (num % i === 0 || num % (i + 2) === 0) {
+//       return false;
+//     }
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
-console.log(isPrime(0));
-console.log(isPrime(1));
-console.log(isPrime(2));
-console.log(isPrime(3));
-console.log(isPrime(4));
-console.log(isPrime(5));
-console.log(isPrime(6));
-console.log(isPrime(7));
-console.log(isPrime(11));
-console.log(isPrime(13));
-console.log(isPrime(15));
-
+// console.log(isPrime(0));
+// console.log(isPrime(1));
+// console.log(isPrime(2));
+// console.log(isPrime(3));
 // console.log(isPrime(4));
 // console.log(isPrime(5));
 // console.log(isPrime(6));
@@ -428,26 +420,139 @@ console.log(isPrime(15));
 // console.log(isPrime(13));
 // console.log(isPrime(15));
 
+// // console.log(isPrime(4));
+// // console.log(isPrime(5));
+// // console.log(isPrime(6));
+// // console.log(isPrime(7));
+// // console.log(isPrime(11));
+// // console.log(isPrime(13));
+// // console.log(isPrime(15));
+
+//! /////////////////////////////////////
+// console.clear();
+
+// // const descendingOrder = (n) => Array.from(`${n}`).sort().reverse().join("") * 1;
+// const descendingOrder = (n) =>
+//   `${n}`
+//     .split("")
+//     .sort((a, b) => b - a)
+//     .join("") * 1;
+
+// console.log(descendingOrder(65651));
+// console.log(descendingOrder(231));
+// console.log(descendingOrder(12));
+
+// // let x = 5;
+// // console.log(`${x}`);
+
+// // let array = [11, 2, 1, 15, 7, 9, 53, 14];
+// // console.log(array.sort((a, b) => a - b));
+
+//! /////////////////////////////////////
+// console.clear();
+
+// function firstDup(s) {
+//   const array = s.split("");
+//   console.log(array);
+
+//   for (let i = 0; i < array.length; i++) {
+//     let theNumber = array[i];
+//     let theChecker = 0;
+
+//     for (let index = 0; index < array.length; index++) {
+//       theNumber === array[index] ? theChecker++ : 0;
+//       if (theChecker === 2) {
+//         return theNumber;
+//       }
+//     }
+//   }
+//   return undefined;
+// }
+
+// //* from codewars best answer
+// // function firstDup(s) {
+// //   for (let i = 0; i < s.length; ++i) {
+// //     // console.log([s[i],s.lastIndexOf(s[i])]);
+// //     if (s.lastIndexOf(s[i]) !== i) return s[i];
+// //   }
+// // }
+
+// console.log(firstDup("ode to joy")); //, "o");
+// console.log(firstDup("tweet")); //, "t");
+// console.log(firstDup("Ode to Joy")); //, " ");
+// console.log(firstDup("bar")); //, undefined);
+// console.log(firstDup("123123")); //, "1");
+// console.log(firstDup("!@#$!@#$")); //, "!");
+
+//! /////////////////////////////////////
+// console.clear();
+
+// const positiveSum = (arr) =>
+//   arr.reduce((acc, num) => (num > 0 ? acc + num : acc), 0);
+
+// console.log(positiveSum([1, 2, 3, 4, 5])); //,15);
+// console.log(positiveSum([1, -2, 3, 4, 5])); //,13);
+// console.log(positiveSum([])); //,0);
+// console.log(positiveSum([-1, -2, -3, -4, -5])); //,0);
+// console.log(positiveSum([-1, 2, 3, 4, -5])); //,9);
+
+//! /////////////////////////////////////
+// console.clear();
+ // sumOfDivzBy3And5
+// function solution(number) {
+//   // console.log([...new Array(number).keys()]);  //  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+//   let sum = 0;
+//   number--;
+//   while (number > 2) {
+//     if (!(number % 3) || !(number % 5)) {
+//       sum += number;
+//     }
+//     number--;
+//   }
+//   return sum;
+// }
+
+// console.log(solution(10)); // 23
+
+//! /////////////////////////////////////
+console.clear();
+// Power of two
+// https://www.codewars.com/kata/534d0a229345375d520006a0/javascript
+
+// const isPowerOfTwo = (n) => Number.isInteger(Math.log2(n));
+
 //! /////////////////////////////////////
 console.clear();
 
-// const descendingOrder = (n) => Array.from(`${n}`).sort().reverse().join("") * 1;
-const descendingOrder = (n) =>
-  `${n}`
-    .split("")
-    .sort((a, b) => b - a)
-    .join("") * 1;
+// Even or Odd
+// https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/javascript
 
-console.log(descendingOrder(65651));
-console.log(descendingOrder(231));
-console.log(descendingOrder(12));
-
-// let x = 5;
-// console.log(`${x}`);
-
-// let array = [11, 2, 1, 15, 7, 9, 53, 14];
-// console.log(array.sort((a, b) => a - b));
-
+// const evenOrOdd = (number) => (number % 2 ? "Odd" : "Even");
 
 //! /////////////////////////////////////
 console.clear();
+
+// // Shortest Word
+// // https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/javascript
+
+// const findShort = (s) =>
+//   s
+//     .split(" ")
+//     .reduce(
+//       (shortest, word) =>
+//         word.length < shortest ? (shortest = word.length) : shortest,
+//       Number.POSITIVE_INFINITY
+//     );
+
+// // best answer codewars
+// /* 
+//     function findShort(s){
+//     return Math.min(...s.split(" ").map (s => s.length));
+// }
+//     */
+// console.log(findShort("bitcoin take over the world maybe who knows perhaps")); // 3
+
+//! /////////////////////////////////////
+console.clear();
+
