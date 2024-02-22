@@ -2,16 +2,30 @@
 
 // let kamal = "Kamal";
 
-// console.log(kamal[-1]);
-// console.log(kamal[0]);
-// console.log(kamal[5]);
-// console.log(kamal.charAt(-1));
-// console.log(kamal.charAt(0));
-// console.log(kamal.charAt(5));
-// console.log(kamal.at(-1));
-// console.log(kamal.at(0));
-// console.log(kamal.at(5));
-// console.log(kamal[kamal.length - 1]);
+// console.log(kamal[-1]); // undef.
+// console.log(kamal[0]); // K
+// console.log(kamal[5]); // undef.
+
+// console.log(kamal.charAt(-1)); // ''
+// console.log(kamal.charAt(0)); // K
+// console.log(kamal.charAt(5)); // ''
+
+// console.log(kamal.at(-1)); // l
+// console.log(kamal.at(0)); // K
+// console.log(kamal.at(5)); // undef.
+
+// console.log(kamal[kamal.length - 1]); // l
+
+// console.log("test");
+
+// console.log(null === 0); // false
+// console.log(null == 0); // false
+// console.log(null > 0); // false
+// console.log(null < 0); // false
+// console.log(null >= 0); // true
+// console.log(null <= 0); // true
+// console.log(null != 0); // true
+// console.log(null !== 0); // true
 
 // //! /////////////////////////////////////
 // console.clear();
@@ -498,7 +512,7 @@
 
 //! /////////////////////////////////////
 // console.clear();
- // sumOfDivzBy3And5
+// sumOfDivzBy3And5
 // function solution(number) {
 //   // console.log([...new Array(number).keys()]);  //  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -518,23 +532,22 @@
 //! /////////////////////////////////////
 console.clear();
 // Power of two
-// https://www.codewars.com/kata/534d0a229345375d520006a0/javascript
-
+// https://www.codewars.com/kata/534d0a229345375d520006a0
 // const isPowerOfTwo = (n) => Number.isInteger(Math.log2(n));
 
 //! /////////////////////////////////////
 console.clear();
 
 // Even or Odd
-// https://www.codewars.com/kata/53da3dbb4a5168369a0000fe/javascript
+// https://www.codewars.com/kata/53da3dbb4a5168369a0000fe
 
 // const evenOrOdd = (number) => (number % 2 ? "Odd" : "Even");
 
 //! /////////////////////////////////////
 console.clear();
 
-// // Shortest Word
-// // https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/javascript
+// Shortest Word
+// https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train
 
 // const findShort = (s) =>
 //   s
@@ -546,7 +559,7 @@ console.clear();
 //     );
 
 // // best answer codewars
-// /* 
+// /*
 //     function findShort(s){
 //     return Math.min(...s.split(" ").map (s => s.length));
 // }
@@ -556,3 +569,132 @@ console.clear();
 //! /////////////////////////////////////
 console.clear();
 
+// 7 kyu Factorial
+// https://www.codewars.com/kata/54ff0d1f355cfd20e60001fc
+
+// const factorial = (n) => {
+//   if (n < 0 || n > 12) throw new ArgumentOutOfRangeException();
+
+//   return [...Array(n).keys()].reduce((acc, num) => acc * (num + 1), 1);
+//   return Array(n)
+//     .fill()
+//     .map((num, i) => i)
+//     .reduce((acc, num) => acc * (num + 1), 1);
+// };
+
+// console.log(factorial(5));
+
+//! /////////////////////////////////////
+console.clear();
+
+//8 kyu Square(n) Sum
+// https://www.codewars.com/kata/515e271a311df0350d00000f
+// const squareSum = (numbers) => numbers.reduce((acc, num) => acc + num ** 2, 0);
+
+//! /////////////////////////////////////
+console.clear();
+
+// 8 kyu Convert a String to a Number!
+// https://www.codewars.com/kata/544675c6f971f7399a000e79/train/javascript
+
+const stringToNumber = (str) => str * 1;
+
+/* 
+const ways = [
+	s => +s,
+	s => s++,	// why does it work?
+	s => s--,
+	s => ++s - 1,
+	s => --s + 1,
+
+	s => s * 1,
+	s => s - 0,
+	s => s / 1,
+	s => s - '',
+	s => s ** 1,
+	s => s % Infinity,
+
+	s => ~~s,
+	s => s & -1,
+	s => s | 0,
+	s => s ^ 0,
+	s => s << 0,
+	s => s >> 0,
+	s => s | s,
+	s => s & s,
+
+	s => ~s ^ -1,
+	s => ~s ^ ~0, // ~0 = -1
+	s => ~(s ^ -1),
+	s => s * !!s,
+
+	s => -1 * (~s + 1) || 0, // -1 * 0 = -0
+	s => -(~(s >>> 0) + 1) || 0,
+
+	Number,
+	parseInt,
+	parseFloat,
+	
+	s => Number(s),
+	s => parseInt(s),
+	s => parseFloat(s),
+
+	s => Math.floor(s),
+	s => Math.round(s),
+	s => Math.ceil(s),
+	s => Math.min(s),
+	s => Math.max(s),
+	
+	Math.floor,
+	Math.round,
+	Math.ceil,
+	Math.min,
+	Math.max,
+
+	s => eval(`+ ${s}`), // a space is needed
+	s => eval('+ ' + s), // for cases like eval(+ +12345)
+
+	s => [...s]
+		.slice(+(s[0] == '-' || s[0] == '+')) // remove the sign, if present
+		.reduce((acc,x) => +x + acc * 10)
+		* (s[0] == '-' ? -1 : 1),
+	s => [...s]
+		.slice(+(s[0] == '+')) //remove +, if present
+		.reverse()
+		.reduce((acc,x,i) => x == '-' ? -acc : acc += x * 10 ** i, 0),
+	s => ways[~~(Math.random() * ways.length)](s)
+];
+
+// And now we will use all the methods in a row
+//  © Mylene Farmer 
+const checkThemAll  = (acc, x) => acc === x ? x : NaN;
+const stringToNumber = str => ways.map(fn => fn(str)).reduce(checkThemAll);
+
+*/
+
+//! /////////////////////////////////////
+console.clear();
+
+// 8 kyu Return Negative
+// https://www.codewars.com/kata/55685cd7ad70877c23000102
+const makeNegative = (num) => -Math.abs(num);
+
+//! /////////////////////////////////////
+console.clear();
+
+// // 8 kyu Remove First and Last Character
+// // https://www.codewars.com/kata/56bc28ad5bdaeb48760009b0
+
+// // const removeChar = (str) =>
+// //   str
+// //     .split("")
+// //     .slice(1, str.split("").length - 1)
+// //     .join("");
+
+// // Best answer from Codewars
+// const removeChar = (str) => str.slice(1, -1);
+
+// console.log(removeChar("Kamal"));
+
+//! /////////////////////////////////////
+console.clear();
