@@ -698,3 +698,122 @@ console.clear();
 
 //! /////////////////////////////////////
 console.clear();
+
+//6 kyu Numbers of Letters of Numbers
+
+// https://www.codewars.com/kata/599febdc3f64cd21d8000117
+
+// const writtenNum = [
+//   "zero",
+//   "one",
+//   "two",
+//   "three",
+//   "four",
+//   "five",
+//   "six",
+//   "seven",
+//   "eight",
+//   "nine",
+// ];
+
+// function numbersOfLetters(integer) {
+//   if (integer === 4 || integer === 5 || integer === 0 || integer === 9)
+//     return ["four"];
+
+//   let answer = [];
+
+//   let compiledNum1 = (integer + "")
+//     .split("")
+//     .map((digit) => writtenNum[digit])
+//     .join("");
+
+//   answer.push(compiledNum1);
+
+//   if (compiledNum1.length === 4) {
+//     answer.push("four");
+//     return answer;
+//   }
+//   let compiledNum2 = (compiledNum1.length + "")
+//     .split("")
+//     .map((digit) => writtenNum[digit])
+//     .join("");
+
+//   answer.push(compiledNum2);
+
+//   if (compiledNum2.length === 4) {
+//     answer.push("four");
+//     return answer;
+//   }
+//   let compiledNum3 = (compiledNum2.length + "")
+//     .split("")
+//     .map((digit) => writtenNum[digit])
+//     .join("");
+
+//   answer.push(compiledNum3);
+
+//   if (compiledNum3.length === 4) {
+//     answer.push("four");
+//     return answer;
+//   }
+//   let compiledNum4 = (compiledNum3.length + "")
+//     .split("")
+//     .map((digit) => writtenNum[digit])
+//     .join("");
+
+//   answer.push(compiledNum4);
+
+//   if (compiledNum4.length === 4) {
+//     answer.push("four");
+//     return answer;
+//   }
+//   let compiledNum5 = (compiledNum4.length + "")
+//     .split("")
+//     .map((digit) => writtenNum[digit])
+//     .join("");
+
+//   answer.push(compiledNum5);
+
+//   if (compiledNum5.length === 4) {
+//     answer.push("four");
+//     return answer;
+//   }
+//   let compiledNum6 = (compiledNum5.length + "")
+//     .split("")
+//     .map((digit) => writtenNum[digit])
+//     .join("");
+
+//   answer.push(compiledNum6);
+
+//   if (compiledNum6.length === 4) {
+//     answer.push("four");
+//     return answer;
+//   }
+// }
+
+// // best answer codewars
+
+// /*
+
+// function numbersOfLetters(integer) {
+//     var hash = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+//     var result = [];
+
+//     var text = 'q'.repeat(integer);
+
+//     do {
+//         text = (text.length + '').split('').map(number => hash[number]).join('');
+//         result.push(text);
+//     } while (text != hash[text.length]);
+
+//     return result;
+// }
+
+// */
+// console.log(numbersOfLetters(1)); //, ["one", "three", "five", "four"]));
+// console.log(numbersOfLetters(12)); //, ["onetwo", "six", "three", "five", "four"]));
+// console.log(numbersOfLetters(37)); //, ["threeseven", "onezero", "seven", "five", "four"]));
+// console.log(numbersOfLetters(311)); //, ["threeoneone", "oneone", "six", "three", "five", "four"]));
+// console.log(numbersOfLetters(999)); //, ["nineninenine", "onetwo", "six", "three", "five", "four"]));
+
+//! /////////////////////////////////////
+console.clear();
