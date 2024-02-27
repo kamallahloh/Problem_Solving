@@ -817,3 +817,24 @@ console.clear();
 
 //! /////////////////////////////////////
 console.clear();
+
+// 6 kyu Does my number look big in this?
+// https://www.codewars.com/kata/5287e858c6b5a9678200083c
+// A Narcissistic Number (or Armstrong Number)
+
+// const narcissistic = (value) => {
+//   base = (value + "").length;
+//   return (
+//     (value + "").split("").reduce((acc, elem) => acc + elem ** base, 0) ===
+//     value
+//   );
+// };
+
+// console.log(narcissistic(7));
+// console.log(narcissistic(153));
+// console.log(narcissistic(407));
+// console.log(narcissistic(370));
+// console.log(narcissistic(371));
+
+//! /////////////////////////////////////
+console.clear();
