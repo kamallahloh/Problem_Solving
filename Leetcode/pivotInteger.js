@@ -1,17 +1,14 @@
+// 2485. Find the Pivot Integer
+
 /**
  * @param {number} n
  * @return {number}
  */
 const pivotInteger = (n) => {
   for (let x = Math.floor(n / 2); x <= n; x++) {
-    const before = [...new Array(x).keys()]
-      .map((elem) => elem + 1)
-      .reduce((acc, elem) => acc + elem, 0);
-    // console.log(before);
-    const after = [...new Array(n - x + 1).keys()]
-      .map((elem) => elem + x)
-      .reduce((acc, elem) => acc + elem, 0);
-    // console.log(after);
+    const before = (x * (x + 1)) / 2;
+    const after = (n * (n + 1)) / 2 - ((x - 1) * (x - 1 + 1)) / 2;
+
     if (after === before) return x;
   }
   return -1;
