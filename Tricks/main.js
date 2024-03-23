@@ -111,3 +111,14 @@ const checkThemAll = (acc, x) => (acc === x ? x : NaN);
 const stringToNumber = (str) => ways.map((fn) => fn(str)).reduce(checkThemAll);
 
 //! /////////////////////////////////////
+
+console.log(true + true); // 2
+
+//! /////////////////////////////////////
+
+// let x = true === []; // This condition will always return 'false' since JavaScript compares objects by reference, not value.
+// let y = true === ![];
+
+// console.log(x + y); // 0
+
+//! /////////////////////////////////////
