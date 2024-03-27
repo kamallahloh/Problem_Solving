@@ -107,8 +107,8 @@ const ways = [
 ];
 
 // And now we will use all the methods in a row
-const checkThemAll = (acc, x) => (acc === x ? x : NaN);
-const stringToNumber = (str) => ways.map((fn) => fn(str)).reduce(checkThemAll);
+// const checkThemAll = (acc, x) => (acc === x ? x : NaN);
+// const stringToNumber = (str) => ways.map((fn) => fn(str)).reduce(checkThemAll);
 
 //! /////////////////////////////////////
 
@@ -120,5 +120,12 @@ console.log(true + true); // 2
 // let y = true === ![];
 
 // console.log(x + y); // 0
+
+//! /////////////////////////////////////
+// style in browser inspect console
+
+const style =
+  "background-color: darkblue; color: white; font-style: italic; border: 1px solid pink; font-size: 2em;";
+console.log("%cHooray", style);
 
 //! /////////////////////////////////////
