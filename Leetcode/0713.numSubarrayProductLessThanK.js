@@ -29,8 +29,34 @@ const numSubarrayProductLessThanK = (nums, k) => {
   return subArraysCounter;
 };
 
+//! improve Big O not working
+// const numSubarrayProductLessThanK = (nums, k) => {
+//   let repeat = nums.length;
+//   // subArraysCounter
+//   let subArraysCounter = 0;
+//   let multiplier = 1;
+//   // making subArrays
+//   // loop for num of elements in array [1] [1,2] [1,2,3] [1,2,3,4]
+//   for (let j = 0; j < nums.length; j++) {
+//     for (let i = 0; i < repeat; i++) {
+//       const elem = nums[i];
+//       console.log(elem);
+//       multiplier *= elem;
+//       console.log(multiplier);
+//       if (multiplier < k) {
+//         subArraysCounter++;
+//         multiplier = 1;
+//       }
+//     }
+//     repeat--;
+//   }
+
+//   return subArraysCounter;
+// };
+
+
 console.log(numSubarrayProductLessThanK([10, 5, 2, 6], 100)); // 8
 // Explanation: The 8 subArrays that have product less than 100 are: [10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
 
-console.log(numSubarrayProductLessThanK([1, 2, 3], 0)); // 0
-console.log(numSubarrayProductLessThanK([1, 2, 3], 10)); //
+// console.log(numSubarrayProductLessThanK([1, 2, 3], 0)); // 0
+// console.log(numSubarrayProductLessThanK([1, 2, 3], 10)); //

@@ -16,8 +16,6 @@
 
 //! /////////////////////////////////////
 
-// console.log(null === 0); // false
-// console.log(null == 0); // false
 // console.log(null > 0); // false
 // console.log(null < 0); // false
 // console.log(null >= 0); // true
@@ -27,6 +25,12 @@
 // console.log(null && false); // null
 // console.log(null === false); // false
 // console.log(null == false); // false
+
+// console.log(false != 0); // false
+// console.log(true && false); // false
+// console.log(true & false); // 0
+// console.log(true || false); // true
+// console.log(true | false); // 1
 
 //! /////////////////////////////////////
 
@@ -149,3 +153,28 @@
 // setTimeout(() => {
 //   clearInterval(interval);
 // }, 10000);
+
+//! /////////////////////////////////////
+
+// remove any number after the digit.
+// float to int
+
+// const int1 = 178.9 | 0;
+// const int2 = (178.9 / 10) | 0;
+// const int3 = (178.9 / 100) | 0;
+
+// console.log(int1); // 178
+// console.log(int2); // 17
+// console.log(int3); // 1
+
+//! /////////////////////////////////////
+
+// truncate an array
+
+// const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// array.length = 3;
+
+// console.log(array); // [1, 2, 3]
+
+//! /////////////////////////////////////
