@@ -178,3 +178,7 @@
 // console.log(array); // [1, 2, 3]
 
 //! /////////////////////////////////////
+
+console.log(0 == "0"); // true
+console.log(0 == []); // true
+console.log([] == "0"); // false
