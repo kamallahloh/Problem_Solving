@@ -12,7 +12,7 @@ CREATE TABLE
         machine_id INT,
         process_id INT,
         activity_type activities_enum,
-        timestamp FLOAT (5, 2) DEFAULT 0.000
+        timestamp FLOAT DEFAULT 0
         -- timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         -- timestamp TIMESTAMP DEFAULT NOW ()
     );
@@ -37,6 +37,7 @@ VALUES
 SELECT
     a.machine_id,
     ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time
+    -- if not working remove the ROUND and test again
 FROM
     activity a
     JOIN activity b ON a.machine_id = b.machine_id
