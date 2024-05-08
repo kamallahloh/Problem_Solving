@@ -179,6 +179,27 @@
 
 //! /////////////////////////////////////
 
-console.log(0 == "0"); // true
-console.log(0 == []); // true
-console.log([] == "0"); // false
+// console.log(0 == "0"); // true
+// console.log(0 == []); // true
+// console.log([] == "0"); // false
+
+//! /////////////////////////////////////
+
+// frequencyMap ====> time complexity = o(n)
+const array = [1, 2, 4, 4, 3, 3, 1, 5, 3];
+
+function createFrequencyMap(arr) {
+  const frequencyMap = new Map();
+  console.log(frequencyMap);
+
+  for (const item of arr) {
+    if (frequencyMap.has(item)) {
+      frequencyMap.set(item, frequencyMap.get(item) + 1);
+    } else {
+      frequencyMap.set(item, 1);
+    }
+  }
+  return frequencyMap;
+}
+
+console.log(createFrequencyMap(array));
