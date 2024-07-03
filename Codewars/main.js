@@ -103,6 +103,8 @@
 //   return n.toString(2).split("0").join("").length;
 // };
 
+const countBits = (n) => n.toString(2).split("0").join("").length;
+
 // // console.log(countBits(0));
 // // console.log(countBits(1));
 // // console.log(countBits(2));

@@ -202,4 +202,4 @@ function createFrequencyMap(arr) {
   return frequencyMap;
 }
 
-console.log(createFrequencyMap(array));
+// console.log(createFrequencyMap(array));
