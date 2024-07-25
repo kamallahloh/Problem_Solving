@@ -1,0 +1,42 @@
+object Kata: TKata
+  Left = 1229
+  Top = 570
+  Width = 642
+  Height = 140
+  VertScrollBar.Range = 101
+  HorzScrollBar.Range = 100
+  Caption = 'Kata'
+  Color = clBackground
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  TextWidth = 6
+  object Label1: TLabel
+    Left = 24
+    Top = 32
+    Width = 76
+    Height = 29
+    Caption = 'Label1'
+    Font.Color = clBlack
+    Font.Height = 25
+    Font.Name = 'MS Shell Dlg'
+    Font.Pitch = fpVariable
+    Font.Style = []
+    Font.Weight = 40
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 24
+    Top = 72
+    Width = 76
+    Height = 29
+    Caption = 'Label2'
+    Font.Color = clBlack
+    Font.Height = 25
+    Font.Name = 'MS Shell Dlg'
+    Font.Pitch = fpVariable
+    Font.Style = []
+    Font.Weight = 40
+    ParentFont = False
+  end
+end
