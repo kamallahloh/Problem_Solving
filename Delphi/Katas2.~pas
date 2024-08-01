@@ -69,8 +69,8 @@ end;
 
 procedure TKata.FormActivate(Sender: TObject);
 begin
-    //Label1.Caption := '';
-    //Label1.Caption := '0/14 ==> ' + PrinterError('aaabbbbhaijjjm'); // 0/14
+    Label1.Caption := '';
+    Label1.Caption := '0/14 ==> ' + PrinterError('aaabbbbhaijjjm'); // 0/14
 
     Label2.Caption := '';
     Label2.Caption := '8/22 ==> ' + PrinterError('aaaxbbbbyyhwawiwjjjwwm');  // 8/22

@@ -1,7 +1,7 @@
 object Kata: TKata
-  Left = 1229
+  Left = 1501
   Top = 570
-  Width = 642
+  Width = 370
   Height = 140
   VertScrollBar.Range = 101
   HorzScrollBar.Range = 100
