@@ -174,8 +174,9 @@ function parseInt(string) {
   return s;
 }
 
+
 //console.log(parseInt("one")); // 1
 //console.log(parseInt("twenty")); // 20
 //console.log(parseInt("two hundred forty")); // 240
-console.log(parseInt("two hundred and forty-six")); // 246
+//console.log(parseInt("two hundred and forty-six")); // 246
 //console.log(parseInt("seven hundred eighty-three thousand nine hundred and nineteen")); // 783919
