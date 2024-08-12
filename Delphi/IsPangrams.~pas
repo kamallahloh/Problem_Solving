@@ -34,23 +34,20 @@ Var
   Alphabet: array of Char;
   i,j: Integer;
   LetterToCheck: Char;
-  UpCase: string;
 begin
 // Initialize the array with lowercase letters
   for i := 0 to 25 do
     Alphabet[i] := Chr(Ord('A') + i);
 
-  UpCase := UpperCase(s);
-
-  For j := 1 to Length(UpCase) do
+  For j := 1 to Length(s) do
     begin
 //////////////////////////////////
     // Letter to check
-      LetterToCheck := UpCase[j];
+      LetterToCheck := UpperCase(s[j]);
 
     // Search for the letter
       if Length(Alphabet) = 0 then Exit;
-      for i := 0 to 25 do
+      for i := 0 to Length(Alphabet) do
         if Alphabet[i] = LetterToCheck then
           SpliceArray(Alphabet,i,1,[]);
 //////////////////////////////////
