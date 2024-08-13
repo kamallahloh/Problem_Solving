@@ -70,3 +70,78 @@ end;
 
 
 end.
+
+ {
+### Codewars Best Answer
+
+unit Kata;
+
+interface
+
+function IsPangram(s: String): Boolean;
+
+implementation
+
+function IsPangram(s: String): Boolean;
+var
+  cs: Set of Char = [];
+  c: Char;
+begin
+  for c in s do
+    Include(cs, LowerCase(c));
+  Result := cs >= ['a'..'z'];
+end;
+
+end.
+
+ }
+
+{
+### Codewars My Answer
+
+unit Kata;
+
+interface
+uses
+  SysUtils, Variants, Classes;
+  
+function IsPangram (s: string): boolean;
+function IsLetter(const Char: Char): Boolean;
+
+var 
+  Alphabet: array[0..25] of Boolean;
+  
+implementation
+
+function IsPangram (s: string): boolean;
+var
+  i, j: Integer;
+  Checked: Boolean;
+  CheckLtr: String;
+begin
+  Checked := True;
+  // Initialize the array with Boolean values.
+  for i := 1 to 26 do Alphabet[i] := False;
+  
+  // Convert string to uppercase for case-insensitive check
+  s := UpperCase(s);
+
+  for j := 1 to Length(s) do
+    if IsLetter(s[j]) then
+      Alphabet[ord(s[j]) - 64] := True; // ord('A') = 65
+
+  for i := 1 to 26 do
+    Checked := Checked And Alphabet[i];
+
+
+  IsPangram := Checked;
+end;
+
+function IsLetter(const Char: Char): Boolean;
+begin
+  IsLetter := (Char in ['A'..'Z']) or (Char in ['a'..'z']);
+end;
+
+end.
+
+}
