@@ -1,8 +1,8 @@
 object IsPangram: TIsPangram
-  Left = 1671
-  Top = 822
-  Width = 238
-  Height = 128
+  Left = 1594
+  Top = 411
+  Width = 226
+  Height = 565
   Caption = 'IsPangram'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,5 +26,14 @@ object IsPangram: TIsPangram
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+  end
+  object Memo1: TMemo
+    Left = 16
+    Top = 88
+    Width = 185
+    Height = 409
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 0
   end
 end
