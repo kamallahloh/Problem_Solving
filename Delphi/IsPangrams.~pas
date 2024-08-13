@@ -12,7 +12,6 @@ type
     procedure FormShow(Sender: TObject);
   function IsPangram (s: string): boolean;
   function IsLetter(const Char: Char): Boolean;
-  procedure SpliceArray(var AArray: array of Integer; Index, Count: Integer; const InsertValues: array of Integer);
 
   private
     { Private declarations }
@@ -31,30 +30,23 @@ uses Math, StrUtils;
 
 function TIsPangram.IsPangram (s: string): boolean;
 Var
-  Alphabet: array of Char;
+  Alphabet: array of Boolean;
   i,j: Integer;
-  LetterToCheck: Char;
+  Checked: Boolean;
+
 begin
-// Initialize the array with lowercase letters
-  for i := 0 to 25 do
-    Alphabet[i] := Chr(Ord('A') + i);
+  Checked := True;
+
+// Initialize the array with Boolean values.
+  For i := 0 to 25 do Alphabet[i] := False;
 
   For j := 1 to Length(s) do
-    begin
-//////////////////////////////////
-    // Letter to check
-      LetterToCheck := UpperCase(s[j]);
+      If IsLetter(s[j]) Then
+         Alphabet[ord(UpperCase(s)[j])-64] := True; // Ord('A') = 65
 
-    // Search for the letter
-      if Length(Alphabet) = 0 then Exit;
-      for i := 0 to Length(Alphabet) do
-        if Alphabet[i] = LetterToCheck then
-          SpliceArray(Alphabet,i,1,[]);
-//////////////////////////////////
-    end;
+  For i := 0 to 25 do Checked := Checked And Alphabet[i];
 
-
-  if Length(Alphabet) = 0 then
+  if Checked then
     IsPangram := True
   else
     IsPangram := False;
@@ -71,23 +63,5 @@ begin
   Result := (Char in ['A'..'Z']) or (Char in ['a'..'z']);
 end;
 
-procedure TIsPangram.SpliceArray(var AArray: array of Char; Index, Count: Integer; const InsertValues: array of Char);
-var
-  i, j, NewLength: Integer;
-begin
-  // Calculate new length
-  NewLength := Length(AArray) - Count + Length(InsertValues);
-
-  // Resize array
-  SetLength(AArray, NewLength);
-
-  // Shift elements after the splice point
-  for i := High(AArray) downto Index + Length(InsertValues) do
-    AArray[i] := AArray[i - Length(InsertValues)];
-
-  // Insert new elements
-  for i := 0 to High(InsertValues) do
-    AArray[Index + i] := InsertValues[i];
-end;
 
 end.
