@@ -10,11 +10,23 @@ function sumIntervals(intervals) {
   const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
   // [ [ 1, 5 ], [ 1, 6 ], [ 5, 11 ], [ 10, 20 ], [ 16, 19 ] ]
 
+  let tempInterval = [sortedIntervals[0]];
   const overLappedIntervals = [];
 
-    
+  for (let i = 1; i < sortedIntervals.length; i++) {
+    const interval = sortedIntervals[i];
 
-  return overLappedIntervals
+    if (interval[0] < tempInterval[1]) {
+      tempInterval[1] = interval[1];
+      i--;
+    } else {
+      overLappedIntervals.push(tempInterval);
+      tempInterval = sortedIntervals[i];
+    }
+  }
+  console.log(overLappedIntervals);
+
+  return overLappedIntervals;
 }
 
 /* console.log(
