@@ -5,7 +5,6 @@ function sumIntervals(intervals) {
   if (intervals.length === 1) return intervals[0][1] - intervals[0][0];
 
   const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
-  console.log(sortedIntervals);
 
   let tempInterval = sortedIntervals[0];
 
@@ -13,30 +12,20 @@ function sumIntervals(intervals) {
 
   for (let i = 1; i < sortedIntervals.length; i++) {
     const interval = sortedIntervals[i];
-    console.log(tempInterval);
-    console.log(interval[0]);
-    console.log(tempInterval[1]);
-    console.log(interval[0] <= tempInterval[1]);
 
     if (interval[0] <= tempInterval[1]) {
       if (interval[1] > tempInterval[1]) {
         tempInterval[1] = interval[1];
-        console.log(tempInterval);
       } else {
         overLappedIntervals.push(tempInterval);
-        console.log(sortedIntervals[i]);
         tempInterval = sortedIntervals[i];
-        //i--;
       }
     } else {
       overLappedIntervals.push(tempInterval);
-      console.log(sortedIntervals[i]);
       tempInterval = interval;
-      console.log(tempInterval);
       i === sortedIntervals.length - 1 &&
         overLappedIntervals.push(tempInterval);
     }
-    console.log(i);
   }
 
   let sum = 0;
@@ -47,7 +36,7 @@ function sumIntervals(intervals) {
 }
 
 console.log(sumIntervals([[1, 5]]));
-/* 
+
 console.log(
   sumIntervals([
     [1, 2],
@@ -81,4 +70,3 @@ console.log(
     [30, 40],
   ])
 ); // 100000030
- */
