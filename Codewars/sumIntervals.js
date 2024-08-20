@@ -2,34 +2,53 @@
 // Sum of Intervals
 
 function sumIntervals(intervals) {
-  /*   let sum = 0;
-  for (const interval of intervals) {
-    sum += interval[1] - interval[0];
-  }
-  return sum; */
-  const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
-  // [ [ 1, 5 ], [ 1, 6 ], [ 5, 11 ], [ 10, 20 ], [ 16, 19 ] ]
+  if (intervals.length === 1) return intervals[0][1] - intervals[0][0];
 
-  let tempInterval = [sortedIntervals[0]];
+  const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
+  console.log(sortedIntervals);
+
+  let tempInterval = sortedIntervals[0];
+
   const overLappedIntervals = [];
 
   for (let i = 1; i < sortedIntervals.length; i++) {
     const interval = sortedIntervals[i];
+    console.log(tempInterval);
+    console.log(interval[0]);
+    console.log(tempInterval[1]);
+    console.log(interval[0] <= tempInterval[1]);
 
-    if (interval[0] < tempInterval[1]) {
-      tempInterval[1] = interval[1];
-      i--;
+    if (interval[0] <= tempInterval[1]) {
+      if (interval[1] > tempInterval[1]) {
+        tempInterval[1] = interval[1];
+        console.log(tempInterval);
+      } else {
+        overLappedIntervals.push(tempInterval);
+        console.log(sortedIntervals[i]);
+        tempInterval = sortedIntervals[i];
+        //i--;
+      }
     } else {
       overLappedIntervals.push(tempInterval);
-      tempInterval = sortedIntervals[i];
+      console.log(sortedIntervals[i]);
+      tempInterval = interval;
+      console.log(tempInterval);
+      i === sortedIntervals.length - 1 &&
+        overLappedIntervals.push(tempInterval);
     }
+    console.log(i);
   }
-  console.log(overLappedIntervals);
 
-  return overLappedIntervals;
+  let sum = 0;
+  for (const interval of overLappedIntervals) {
+    sum += interval[1] - interval[0];
+  }
+  return sum;
 }
 
-/* console.log(
+console.log(sumIntervals([[1, 5]]));
+/* 
+console.log(
   sumIntervals([
     [1, 2],
     [6, 10],
@@ -39,11 +58,11 @@ function sumIntervals(intervals) {
 
 console.log(
   sumIntervals([
-   [1, 4],
-   [7, 10],
-   [3, 5]
-])
-); // 7 */
+    [1, 4],
+    [7, 10],
+    [3, 5],
+  ])
+); // 7
 
 console.log(
   sumIntervals([
@@ -54,7 +73,6 @@ console.log(
     [5, 11],
   ])
 ); // 19
-/*
 
 console.log(
   sumIntervals([
