@@ -17,9 +17,12 @@
 
             //Console.WriteLine(RemoveExclamationMarks("!?!"));
 
-
+            Console.WriteLine(CockroachSpeed(1.08));
         }
 
+        // https://www.codewars.com/kata/55fab1ffda3e2e44f00000c6/csharp
+        // Beginner Series #4 Cockroach
+        public static int CockroachSpeed(double x) => (int)Math.Floor(x * 100000 / 60 / 60);
 
         public static string Bmi(double weight, double height)
         {
