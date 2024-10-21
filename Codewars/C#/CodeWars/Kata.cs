@@ -21,6 +21,20 @@
         }
 
 
+        // https://www.codewars.com/kata/515e271a311df0350d00000f/csharp
+        // Square(n) Sum
+        public static int SquareSum(int[] numbers)
+        {
+            int sum = 0;
+            foreach (var n in numbers)
+            {
+                sum += n * n;
+            }
+            return sum;
+        }
+        //public static int SquareSum(int[] n) => n.Sum(i => i * i);
+
+
         // https://www.codewars.com/kata/568d0dd208ee69389d000016/csharp
         // Transportation on vacation
         //public static int RentalCarCost(int d) => d < 3 ? d * 40 : d < 7 ? d * 40 - 20 : d * 40 - 50;
