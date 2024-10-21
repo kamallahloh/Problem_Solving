@@ -15,16 +15,26 @@
             //Console.WriteLine(FindNeedle(haystack_2));
             //Console.WriteLine(FindNeedle(haystack_3));
 
-            Console.WriteLine(RemoveExclamationMarks("!?!"));
+            //Console.WriteLine(RemoveExclamationMarks("!?!"));
+
+
         }
 
-        public static string RemoveExclamationMarks(string s)
+
+        public static string Bmi(double weight, double height)
         {
-            // https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/csharp
-            // Remove exclamation marks
-
-            return s.Replace("!","");
+            // https://www.codewars.com/kata/57a429e253ba3381850000fb/train/csharp
+            // Calculate BMI
+            var x = (weight / (height * height));
+            return x > 30 ? "Obese" : x > 25 ? "Overweight" : x > 18.5 ? "Normal" : "Underweight";
         }
+
+        // public static string Bmi(double w, double h) => (w = w / h / h) > 30 ? "Obese" : w > 25 ? "Overweight" : w > 18.5 ? "Normal" : "Underweight";
+
+        // https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/csharp
+        // Remove exclamation marks
+        public static string RemoveExclamationMarks(string s) => s.Replace("!", "");
+
         public static int GetAge(string inputString)
         {
             // return correct age (int). Happy coding :)
