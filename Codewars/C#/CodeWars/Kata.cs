@@ -1,4 +1,8 @@
-﻿namespace CodeWars
+﻿using System.Diagnostics.Metrics;
+using System;
+using System.Collections.Generic;
+
+namespace CodeWars
 {
     internal class Kata
     {
@@ -18,8 +22,96 @@
             //Console.WriteLine(RemoveExclamationMarks("!?!"));
 
             //Console.WriteLine(CockroachSpeed(1.08));
+            Console.WriteLine(Decode(".... . -.--   .--- ..- -.. ."));
+            Console.WriteLine(Decode("... --- ...   .--. .-.. . .- ... ."));
         }
 
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public static string Decode(string morseCode)
+        {
+            Dictionary<String, String> morse = new Dictionary<String, String>()
+            {
+                {".-"   ,"A"},
+                {"-..." ,"B"},
+                {"-.-." ,"C"},
+                {"-.."  ,"D"},
+                {"."    ,"E"},
+                {"..-." ,"F"},
+                {"--."  ,"G"},
+                {"...." ,"H"},
+                {".."   ,"I"},
+                {".---" ,"J"},
+                {"-.-"  ,"K"},
+                {".-.." ,"L"},
+                {"--"   ,"M"},
+                {"-."   ,"N"},
+                {"---"  ,"O"},
+                {".--." ,"P"},
+                {"--.-" ,"Q"},
+                {".-."  ,"R"},
+                {"..."  ,"S"},
+                {"-"    ,"T"},
+                {"..-"  ,"U"},
+                {"...-" ,"V"},
+                {".--"  ,"W"},
+                {"-..-" ,"X"},
+                {"-.--" ,"Y"},
+                {"--.." ,"Z"},
+                {"-----","0"},
+                {".----","1"},
+                {"..---","2"},
+                {"...--","3"},
+                {"....-","4"},
+                {".....","5"},
+                {"-....","6"},
+                {"--...","7"},
+                {"---..","8"},
+                {"----.","9"},
+                {"...---...","SOS"},
+                {"-.-.--","!"},
+                {".-.-.-","."},
+            };
+
+            List<string> decodedWords = new List<string>();
+            // var decodedWords = new string[4] { "1", "2", "1", "2", "2" };
+            // IEnumerable Interface
+
+            var words = morseCode.Trim().Split("   ");
+            foreach (var word in words)
+            {
+                var letters = word.Split(" ");
+
+                for (var i = 0; i < letters.Length; i++)
+                {
+                    letters[i] = morse[letters[i]];
+                }
+                decodedWords.Add(String.Join("", letters));
+            }
+            return String.Join(" ", decodedWords);
+        }
+
+
+        //        using System;
+        //using System.Linq;
+
+        //class MorseCodeDecoder
+        //    {
+        //        public static string Decode(string morseCode)
+        //        {
+        //            var chars = morseCode
+        //              .Trim()
+        //              .Replace("   ", " W ")
+        //              .Split(' ')
+        //              .Select(w => w == "W" ? " " : MorseCode.Get(w));
+        //            return string.Join("", chars);
+        //        }
+        //    }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // https://www.codewars.com/kata/515e271a311df0350d00000f/csharp
         // Square(n) Sum
@@ -33,7 +125,7 @@
             return sum;
         }
         //public static int SquareSum(int[] n) => n.Sum(i => i * i);
-
+        //public static int SquareSum(int[] numbers) => numbers.Aggregate(0, (agg, n) => agg += n * n); reduce
 
         // https://www.codewars.com/kata/568d0dd208ee69389d000016/csharp
         // Transportation on vacation
