@@ -15,9 +15,16 @@
             //Console.WriteLine(FindNeedle(haystack_2));
             //Console.WriteLine(FindNeedle(haystack_3));
 
-
+            Console.WriteLine(RemoveExclamationMarks("!?!"));
         }
 
+        public static string RemoveExclamationMarks(string s)
+        {
+            // https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/csharp
+            // Remove exclamation marks
+
+            return s.Replace("!","");
+        }
         public static int GetAge(string inputString)
         {
             // return correct age (int). Happy coding :)
