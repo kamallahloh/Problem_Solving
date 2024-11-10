@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.Metrics;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CodeWars
 {
@@ -22,78 +23,177 @@ namespace CodeWars
             //Console.WriteLine(RemoveExclamationMarks("!?!"));
 
             //Console.WriteLine(CockroachSpeed(1.08));
-            Console.WriteLine(Decode(".... . -.--   .--- ..- -.. ."));
-            Console.WriteLine(Decode("... --- ...   .--. .-.. . .- ... ."));
+            //Console.WriteLine(Decode(".... . -.--   .--- ..- -.. ."));
+            //Console.WriteLine(Decode("... --- ...   .--. .-.. . .- ... ."));
+
+            Console.WriteLine(RomanConvert(1234));
         }
-
-
-
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static string Decode(string morseCode)
+        // https://www.codewars.com/kata/51b62bf6a9c58071c600001b/train/csharp
+        // Roman Numerals Encoder
+
+        public static string DigitToChars(int number, string one, string five, string ten)
         {
-            Dictionary<String, String> morse = new Dictionary<String, String>()
-            {
-                {".-"   ,"A"},
-                {"-..." ,"B"},
-                {"-.-." ,"C"},
-                {"-.."  ,"D"},
-                {"."    ,"E"},
-                {"..-." ,"F"},
-                {"--."  ,"G"},
-                {"...." ,"H"},
-                {".."   ,"I"},
-                {".---" ,"J"},
-                {"-.-"  ,"K"},
-                {".-.." ,"L"},
-                {"--"   ,"M"},
-                {"-."   ,"N"},
-                {"---"  ,"O"},
-                {".--." ,"P"},
-                {"--.-" ,"Q"},
-                {".-."  ,"R"},
-                {"..."  ,"S"},
-                {"-"    ,"T"},
-                {"..-"  ,"U"},
-                {"...-" ,"V"},
-                {".--"  ,"W"},
-                {"-..-" ,"X"},
-                {"-.--" ,"Y"},
-                {"--.." ,"Z"},
-                {"-----","0"},
-                {".----","1"},
-                {"..---","2"},
-                {"...--","3"},
-                {"....-","4"},
-                {".....","5"},
-                {"-....","6"},
-                {"--...","7"},
-                {"---..","8"},
-                {"----.","9"},
-                {"...---...","SOS"},
-                {"-.-.--","!"},
-                {".-.-.-","."},
-            };
-
-            List<string> decodedWords = new List<string>();
-            // var decodedWords = new string[4] { "1", "2", "1", "2", "2" };
-            // IEnumerable Interface
-
-            var words = morseCode.Trim().Split("   ");
-            foreach (var word in words)
-            {
-                var letters = word.Split(" ");
-
-                for (var i = 0; i < letters.Length; i++)
-                {
-                    letters[i] = morse[letters[i]];
-                }
-                decodedWords.Add(String.Join("", letters));
-            }
-            return String.Join(" ", decodedWords);
+            if (number == 1) { return one; };
+            if (number == 2) { return one + one; };
+            if (number == 3) { return one + one + one; };
+            if (number == 4) { return one + five; };
+            if (number == 5) { return five; };
+            if (number == 6) { return five + one; };
+            if (number == 7) { return five + one + one; };
+            if (number == 8) { return five + one + one + one; };
+            if (number == 9) { return one + ten; };
+            return "";
         }
 
+
+
+        public static string RomanConvert(int n)
+        {
+            /* 
+            Symbol    Value
+I          1
+V          5
+X          10
+L          50
+C          100
+D          500
+M          1,000
+             */
+
+            StringBuilder result = new StringBuilder();
+
+            var thousands = 0;
+            var hunderds = 0;
+            var tens = 0;
+            var ones = 0;
+
+
+
+            if (n >= 1000)
+            {
+                thousands = Convert.ToInt32(Math.Floor(n / 1000f));
+                hunderds = Convert.ToInt32(Math.Floor(n / 100f) - (Math.Floor(n / 1000f) * 10));
+                tens = Convert.ToInt32(Math.Floor(n / 10f) - (Math.Floor(n / 100f) * 10));
+                ones = Convert.ToInt32(Math.Floor(n / 1f) - (Math.Floor(n / 10f) * 10));
+            }
+            else if (n >= 100)
+            {
+                hunderds = Convert.ToInt32(Math.Floor(n / 100f));
+                tens = Convert.ToInt32(Math.Floor(n / 10f) - (Math.Floor(n / 100f) * 10));
+                ones = Convert.ToInt32(Math.Floor(n / 1f) - (Math.Floor(n / 10f) * 10));
+            }
+            else if (n >= 10)
+            {
+                tens = Convert.ToInt32(Math.Floor(n / 10f));
+                ones = Convert.ToInt32(Math.Floor(n / 1f) - (Math.Floor(n / 10f) * 10));
+            }
+            else if (n >= 1)
+            {
+                ones = n;
+            };
+
+            result.Append(DigitToChars(thousands, "M", "", ""));
+            result.Append(DigitToChars(hunderds, "C", "D", "M"));
+            result.Append(DigitToChars(tens, "X", "L", "C"));
+            result.Append(DigitToChars(ones, "I", "V", "X"));
+
+            return result.ToString();
+        }
+
+
+        /*
+         using System;
+
+        public class RomanConvert
+        {
+            public static string Solution(int n)
+            {
+          string roman = "";
+          string[] thousand = {"","M","MM","MMM"};
+          string[] hundred = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+          string[] ten = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+          string[] one = {"","I","II","III","IV","V","VI","VII","VIII","IX"};
+
+          roman += thousand[(n/1000)%10];
+          roman += hundred[(n/100)%10];
+          roman += ten[(n/10)%10];
+          roman += one[n%10];
+
+          return roman;
+
+            }
+        }
+
+         */
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /*        public static string Decode(string morseCode)
+                {
+                    Dictionary<String, String> morse = new Dictionary<String, String>()
+                    {
+                        {".-"   ,"A"},
+                        {"-..." ,"B"},
+                        {"-.-." ,"C"},
+                        {"-.."  ,"D"},
+                        {"."    ,"E"},
+                        {"..-." ,"F"},
+                        {"--."  ,"G"},
+                        {"...." ,"H"},
+                        {".."   ,"I"},
+                        {".---" ,"J"},
+                        {"-.-"  ,"K"},
+                        {".-.." ,"L"},
+                        {"--"   ,"M"},
+                        {"-."   ,"N"},
+                        {"---"  ,"O"},
+                        {".--." ,"P"},
+                        {"--.-" ,"Q"},
+                        {".-."  ,"R"},
+                        {"..."  ,"S"},
+                        {"-"    ,"T"},
+                        {"..-"  ,"U"},
+                        {"...-" ,"V"},
+                        {".--"  ,"W"},
+                        {"-..-" ,"X"},
+                        {"-.--" ,"Y"},
+                        {"--.." ,"Z"},
+                        {"-----","0"},
+                        {".----","1"},
+                        {"..---","2"},
+                        {"...--","3"},
+                        {"....-","4"},
+                        {".....","5"},
+                        {"-....","6"},
+                        {"--...","7"},
+                        {"---..","8"},
+                        {"----.","9"},
+                        {"...---...","SOS"},
+                        {"-.-.--","!"},
+                        {".-.-.-","."},
+                    };
+
+                    List<string> decodedWords = new List<string>();
+                    // var decodedWords = new string[4] { "1", "2", "1", "2", "2" };
+                    // IEnumerable Interface
+
+                    var words = morseCode.Trim().Split("   ");
+                    foreach (var word in words)
+                    {
+                        var letters = word.Split(" ");
+
+                        for (var i = 0; i < letters.Length; i++)
+                        {
+                            letters[i] = morse[letters[i]];
+                        }
+                        decodedWords.Add(String.Join("", letters));
+                    }
+                    return String.Join(" ", decodedWords);
+                }
+        */
 
         //        using System;
         //using System.Linq;
