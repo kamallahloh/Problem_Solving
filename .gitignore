@@ -1,1 +1,8 @@
 *.vsidx
+
+# Untrack these files
+# git rm -r --cached "Codewars/C#/CodeWars/.vs/"
+Codewars/C#/CodeWars/.vs/
+
+# git rm -r --cached "Codewars/C#/CodeWars/obj/"
+Codewars/C#/CodeWars/obj/
