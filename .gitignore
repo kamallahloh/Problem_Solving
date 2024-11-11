@@ -6,3 +6,6 @@ Codewars/C#/CodeWars/.vs/
 
 # git rm -r --cached "Codewars/C#/CodeWars/obj/"
 Codewars/C#/CodeWars/obj/
+
+# git rm -r --cached "Codewars/C#/CodeWars/bin/"
+Codewars/C#/CodeWars/bin/
