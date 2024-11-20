@@ -29,31 +29,112 @@ namespace CodeWars
 
             //Console.WriteLine(RomanConvert(1234));
 
-            Console.WriteLine(
+            //Console.WriteLine(BreakCamelCase("camelCasingAllTheWayBreakTheCode"));
 
-                BreakCamelCase("camelCasingAllTheWayBreakTheCode"));
+            Console.WriteLine(ToWeirdCase("Weird Casing All The Way Break The Code"));
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public static string BreakCamelCase(string str)
+        public static string ToWeirdCase(string s)
         {
             var result = new StringBuilder();
-            var checkedIndex = 0;
+            var odd = true;
 
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                if (char.IsUpper(str[i]))
+                var letter = s[i];
+
+                if (letter == ' ')
                 {
-                    result.Append(str.Substring(checkedIndex, i - checkedIndex) + " ");
-                    checkedIndex = i;
+                    result.Append(' ');
+                    odd = true;
+                    continue;
+                }
+                else
+                {
+                    if (odd)
+                    {
+                        result.Append(char.ToUpper(letter));
+                        odd = false;
+                    }
+                    else
+                    {
+                        result.Append(char.ToLower(letter));
+                        odd = true;
+                    }
                 }
             }
 
-            result.Append(str.Substring(checkedIndex));
             return result.ToString();
         }
 
+        /*
+           public static string ToWeirdCase(string s)
+          {
+            return string.Join(" ", 
+              s.Split(' ')
+              .Select(w => string.Concat(
+                w.Select((ch, i) => i % 2 == 0 ? char.ToUpper(ch) : char.ToLower(ch)
+              ))));
+          }
+        */
+
+        /*
+             public static string ToWeirdCase(string s) => string.Join(" ", s.Split(' ').Select(x => WordToWierdCase(x)));
+
+            private static string WordToWierdCase(string s) => new string(s.ToCharArray()
+                    .Select((ch, i) => i % 2 == 0 ? char.ToUpper(ch) : char.ToLower(ch))
+                    .ToArray());
+        */
+
+
+
+        /*        public static string ToWeirdCase(string s)
+                {
+                    var result = new StringBuilder();
+
+                    foreach (string word in s.Split(' '))
+                    {
+                        var letters = word.Split(' ');
+
+                        for (int i = 0; i < letters.Length; i++)
+                        {
+                            var letter = letters[i];
+                            if (i % 2 == 0)
+                            {
+                                result.Append(letter.ToUpper());
+                            }
+                            else
+                            {
+                                result.Append(letter.ToLower());
+                            };
+                        }
+                        result.Append(' ');
+                    }
+
+                    return result.ToString().Trim();
+                }*/
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /*
+                public static string BreakCamelCase(string str)
+                {
+                    var result = new StringBuilder();
+                    var checkedIndex = 0;
+
+                    for (int i = 0; i < str.Length; i++)
+                    {
+                        if (char.IsUpper(str[i]))
+                        {
+                            result.Append(str.Substring(checkedIndex, i - checkedIndex) + " ");
+                            checkedIndex = i;
+                        }
+                    }
+
+                    result.Append(str.Substring(checkedIndex));
+                    return result.ToString();
+                }
+        */
 
         /*
          public class Kata
