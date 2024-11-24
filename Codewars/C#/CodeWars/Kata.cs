@@ -31,42 +31,53 @@ namespace CodeWars
 
             //Console.WriteLine(BreakCamelCase("camelCasingAllTheWayBreakTheCode"));
 
-            Console.WriteLine(ToWeirdCase("Weird Casing All The Way Break The Code"));
+            //Console.WriteLine(ToWeirdCase("Weird Casing All The Way Break The Code"));
+
+            //Console.WriteLine("00:59:59 ==>", GetReadableTime(3599));
+            Console.WriteLine("23:59:59 ==>" + GetReadableTime(86399));
+            Console.WriteLine("24:00:00 ==>" + GetReadableTime(86400));
+
         }
 
-        public static string ToWeirdCase(string s)
-        {
-            var result = new StringBuilder();
-            var odd = true;
+        public static string GetReadableTime(int time) =>
+            $"{(int)TimeSpan.FromSeconds(time).TotalHours:D2}:{TimeSpan.FromSeconds(time).ToString(@"mm\:ss")}";
 
-            for (int i = 0; i < s.Length; i++)
-            {
-                var letter = s[i];
+        //return string.Format("{0:d2}:{1:d2}:{2:d2}", seconds / 3600, seconds / 60 % 60, seconds % 60);
 
-                if (letter == ' ')
+
+        /*        public static string ToWeirdCase(string s)
                 {
-                    result.Append(' ');
-                    odd = true;
-                    continue;
-                }
-                else
-                {
-                    if (odd)
-                    {
-                        result.Append(char.ToUpper(letter));
-                        odd = false;
-                    }
-                    else
-                    {
-                        result.Append(char.ToLower(letter));
-                        odd = true;
-                    }
-                }
-            }
+                    var result = new StringBuilder();
+                    var odd = true;
 
-            return result.ToString();
-        }
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        var letter = s[i];
 
+                        if (letter == ' ')
+                        {
+                            result.Append(' ');
+                            odd = true;
+                            continue;
+                        }
+                        else
+                        {
+                            if (odd)
+                            {
+                                result.Append(char.ToUpper(letter));
+                                odd = false;
+                            }
+                            else
+                            {
+                                result.Append(char.ToLower(letter));
+                                odd = true;
+                            }
+                        }
+                    }
+
+                    return result.ToString();
+                }
+        */
         /*
            public static string ToWeirdCase(string s)
           {
