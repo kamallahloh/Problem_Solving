@@ -36,79 +36,127 @@ namespace CodeWars
             //Console.WriteLine("00:59:59 ==>", GetReadableTime(3599));
             //Console.WriteLine("23:59:59 ==>" + GetReadableTime(86399));
             //Console.WriteLine("24:00:00 ==>" + GetReadableTime(86400));
-            Console.WriteLine(ParseInt("two hundred forty-six")); // 246
-            Console.WriteLine(ParseInt("two hundred forty-six thousand")); // 246000
-            Console.WriteLine(ParseInt("seven hundred eighty-three thousand nine hundred and nineteen")); // 783919
+            //Console.WriteLine(ParseInt("two hundred forty-six")); // 246
+            //Console.WriteLine(ParseInt("two hundred forty-six thousand")); // 246000
+            //Console.WriteLine(ParseInt("seven hundred eighty-three thousand nine hundred and nineteen")); // 783919
+            int[,] board = new int[,] { { 1, 1, 1 }, { 0, 2, 2 }, { 0, 0, 0 } };
+            int[,] board2 = new int[,] { { 0, 1, 1 }, { 2, 0, 2 }, { 2, 1, 0 } };
+
+            Console.WriteLine(IsSolved(board));
+            Console.WriteLine(IsSolved(board2));
         }
 
-
-
-        public static int ParseInt(string s)
+        // https://www.codewars.com/kata/525caa5c1bf619d28c000335/train/csharp
+        // Tic-Tac-Toe Checker
+        public static int IsSolved(int[,] board)
         {
-            var numbersDictionary = new Dictionary<string, int>
+            // Check rows
+            for (int i = 0; i < 3; i++)
             {
-                { "zero", 0 },
-                { "one", 1 },
-                { "two", 2 },
-                { "three", 3 },
-                { "four", 4 },
-                { "five", 5 },
-                { "six", 6 },
-                { "seven", 7 },
-                { "eight", 8 },
-                { "nine", 9 },
-                { "ten", 10 },
-                { "eleven", 11 },
-                { "twelve", 12 },
-                { "thirteen", 13 },
-                { "fourteen", 14 },
-                { "fifteen", 15 },
-                { "sixteen", 16 },
-                { "seventeen", 17 },
-                { "eighteen", 18 },
-                { "nineteen", 19 },
-                { "twenty", 20 },
-                { "thirty", 30 },
-                { "forty", 40 },
-                { "fifty", 50 },
-                { "sixty", 60 },
-                { "seventy", 70 },
-                { "eighty", 80 },
-                { "ninety", 90 },
-                { "hundred", 100 },
-                { "thousand", 1000 },
-                { "million", 1000000 },
-            };
-
-            var words = s.Replace(" and ", " ").Replace("-", " ").Split(' ');
-            int result = 0;
-            int current = 0;
-
-            foreach (var word in words)
-            {
-                if (numbersDictionary.ContainsKey(word))
+                if (board[i, 0] == board[i, 1] && board[i, 0] == board[i, 2] && board[i, 0] != 0)
                 {
-                    int number = numbersDictionary[word];
-                    if (number == 100 || number == 1000 || number == 1000000)
-                    {
-                        current *= number;
-                    }
-                    else
-                    {
-                        current += number;
-                    }
-
-                    if (number == 1000 || number == 1000000)
-                    {
-                        result += current;
-                        current = 0;
-                    }
+                    return board[i, 0];
                 }
             }
 
-            result += current;
-            return result;
+            // Check columns
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[0, i] == board[1, i] && board[0, i] == board[2, i] && board[0, i] != 0)
+                {
+                    return board[0, i];
+                }
+            }
+
+            // Check diagonal
+            if (board[0, 0] == board[1, 1] && board[0, 0] == board[2, 2] && board[1, 1] != 0)
+            {
+                return board[1, 1];
+            }
+
+            if (board[0, 2] == board[1, 1] && board[0, 2] == board[2, 0] && board[1, 1] != 0)
+            {
+                return board[1, 1];
+            }
+
+            // Check unfinished
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (board[i, j] == 0) return -1;
+                }
+            }
+
+            return 0;
         }
+
+        //public static int ParseInt(string s)
+        //{
+        //    var numbersDictionary = new Dictionary<string, int>
+        //    {
+        //        { "zero", 0 },
+        //        { "one", 1 },
+        //        { "two", 2 },
+        //        { "three", 3 },
+        //        { "four", 4 },
+        //        { "five", 5 },
+        //        { "six", 6 },
+        //        { "seven", 7 },
+        //        { "eight", 8 },
+        //        { "nine", 9 },
+        //        { "ten", 10 },
+        //        { "eleven", 11 },
+        //        { "twelve", 12 },
+        //        { "thirteen", 13 },
+        //        { "fourteen", 14 },
+        //        { "fifteen", 15 },
+        //        { "sixteen", 16 },
+        //        { "seventeen", 17 },
+        //        { "eighteen", 18 },
+        //        { "nineteen", 19 },
+        //        { "twenty", 20 },
+        //        { "thirty", 30 },
+        //        { "forty", 40 },
+        //        { "fifty", 50 },
+        //        { "sixty", 60 },
+        //        { "seventy", 70 },
+        //        { "eighty", 80 },
+        //        { "ninety", 90 },
+        //        { "hundred", 100 },
+        //        { "thousand", 1000 },
+        //        { "million", 1000000 },
+        //    };
+
+        //    var words = s.Replace(" and ", " ").Replace("-", " ").Split(' ');
+        //    int result = 0;
+        //    int current = 0;
+
+        //    foreach (var word in words)
+        //    {
+        //        if (numbersDictionary.ContainsKey(word))
+        //        {
+        //            int number = numbersDictionary[word];
+        //            if (number == 100 || number == 1000 || number == 1000000)
+        //            {
+        //                current *= number;
+        //            }
+        //            else
+        //            {
+        //                current += number;
+        //            }
+
+        //            if (number == 1000 || number == 1000000)
+        //            {
+        //                result += current;
+        //                current = 0;
+        //            }
+        //        }
+        //    }
+
+        //    result += current;
+        //    return result;
+        //}
 
         //public static string GetReadableTime(int time) =>
         //    $"{(int)TimeSpan.FromSeconds(time).TotalHours:D2}:{TimeSpan.FromSeconds(time):mm\\:ss}";
