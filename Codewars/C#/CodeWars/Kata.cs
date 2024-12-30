@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using System.Numerics;
 
 namespace CodeWars
 {
@@ -39,14 +40,20 @@ namespace CodeWars
             //Console.WriteLine(ParseInt("two hundred forty-six")); // 246
             //Console.WriteLine(ParseInt("two hundred forty-six thousand")); // 246000
             //Console.WriteLine(ParseInt("seven hundred eighty-three thousand nine hundred and nineteen")); // 783919
-            int[,] board = new int[,] { { 1, 1, 1 }, { 0, 2, 2 }, { 0, 0, 0 } };
-            int[,] board2 = new int[,] { { 0, 1, 1 }, { 2, 0, 2 }, { 2, 1, 0 } };
+            //int[,] board = new int[,] { { 1, 1, 1 }, { 0, 2, 2 }, { 0, 0, 0 } };
+            //int[,] board2 = new int[,] { { 0, 1, 1 }, { 2, 0, 2 }, { 2, 1, 0 } };
 
-            Console.WriteLine(IsSolved(board));
-            Console.WriteLine(IsSolved(board2));
+            //Console.WriteLine(IsSolved(board));
+            //Console.WriteLine(IsSolved(board2));
+
+            Console.WriteLine(Add("9999999999999999999999999999999999999999999999999999999999999", "9999999999999999999999999999999999999999999999999999999999999")); 
         }
 
-        // https://www.codewars.com/kata/525caa5c1bf619d28c000335/train/csharp
+        // https://www.codewars.com/kata/525f4206b73515bffb000b21
+        // Adding Big Numbers
+        public static string Add(string a, string b) => (BigInteger.Parse(a) + BigInteger.Parse(b)).ToString();    
+
+        /*// https://www.codewars.com/kata/525caa5c1bf619d28c000335/train/csharp
         // Tic-Tac-Toe Checker
         public static int IsSolved(int[,] board)
         {
@@ -89,7 +96,7 @@ namespace CodeWars
             }
 
             return 0;
-        }
+        }*/
 
         //public static int ParseInt(string s)
         //{
